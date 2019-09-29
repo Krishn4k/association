@@ -9,5 +9,5 @@ exports.login = async (req, res) => {
         const token = jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60),username: req.body.username }, secret);
         return res.send(token)
     }
-    return res.send(`Connexion échouée`)
+    return res.send(`Connexion impossible`)
 }
