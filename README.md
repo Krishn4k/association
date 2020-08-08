@@ -2,7 +2,7 @@
 node.js app test
 
 #Installation 
->npm init
+>npm init | install
 
 >npn i express
 
