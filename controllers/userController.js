@@ -25,5 +25,13 @@ const signUp = async (req, res) => {
     return res.send(`toto`)
 }
 
+/**
+ * secretRoute function - just display a msg
+ * @param {*} req 
+ * @param {*} res 
+ */
+const secretRoute = async (req, res) => {
+    return res.send('Secret Route')
+}
 
-module.exports = { login, signUp }
+module.exports = { login, signUp, secretRoute }
