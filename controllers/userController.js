@@ -1,4 +1,4 @@
-const User  = require('../models/user')
+const User   = require('../models/user')
 const jwt    = require('jsonwebtoken')
 const secret = 'thisTokenIsNotSecretChangeIt'
 
@@ -22,7 +22,15 @@ const secret = 'thisTokenIsNotSecretChangeIt'
  * @param {*} res 
  */
 const signUp = async (req, res) => {
-    return res.send(`toto`)
+    // a document instance
+     var newUser = new User({ username:req.body.username, password:req.body.password, usermail:req.body.usermail });
+ 
+     // save model to database
+     newUser.save(function (err, user) {
+       if (err) return console.error(err);
+     });
+
+    return res.send(req.body.username + "succesfully added !")
 }
 
 /**
