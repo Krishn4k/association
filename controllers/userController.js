@@ -22,6 +22,14 @@ const secret = 'thisTokenIsNotSecretChangeIt'
  * @param {*} res 
  */
 const signUp = async (req, res) => {
+
+    // verification name / mail already exists
+    const userNameFind = await User.countDocuments({username:req.body.username})
+    const userMailFind = await User.countDocuments({usermail:req.body.usermail})
+    
+    if (userNameFind > 0) return res.send('This username was already taken.')
+    if (userMailFind > 0) return res.send('This mail was already taken.')
+
     // a document instance
      var newUser = new User({ username:req.body.username, password:req.body.password, usermail:req.body.usermail });
  
@@ -30,7 +38,7 @@ const signUp = async (req, res) => {
        if (err) return console.error(err);
      });
 
-    return res.send(req.body.username + "succesfully added !")
+    return res.send(req.body.username + " succesfully added !")
 }
 
 /**
